@@ -1,0 +1,7 @@
+/DCL_lib/
+/library-source/
+/makefile
+/objects.mk
+/sources.mk
+/subdir_rules.mk
+/subdir_vars.mk
