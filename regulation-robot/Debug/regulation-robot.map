@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker Unix v6.4.6                    
 ******************************************************************************
->> Linked Sun Oct 11 16:14:59 2015
+>> Linked Tue Oct 13 14:22:46 2015
 
 OUTPUT FILE NAME:   <regulation-robot.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 000087ec
+ENTRY POINT SYMBOL: "_c_int00"  address: 000087f9
 
 
 MEMORY CONFIGURATION
@@ -13,8 +13,8 @@ MEMORY CONFIGURATION
 ----------------------  --------  ---------  --------  --------  ----  --------
 PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
-  RAMM0                 00000050   000003b0  000002fe  000000b2  RWIX
-  RAML0_L3              00008000   00002000  00000b38  000014c8  RWIX
+  RAMM0                 00000050   000003b0  000000fa  000002b6  RWIX
+  RAML0_L3              00008000   00002000  0000093f  000016c1  RWIX
   FPUTABLES             003fd860   000006a0  00000000  000006a0  RWIX
   IQTABLES              003fdf00   00000b50  00000000  00000b50  RWIX
   IQTABLES2             003fea50   0000008c  00000000  0000008c  RWIX
@@ -23,7 +23,7 @@ PAGE 0:
   RESET                 003fffc0   00000002  00000000  00000002  RWIX
 
 PAGE 1:
-  BOOT_RSVD             00000002   0000004e  0000000a  00000044  RWIX
+  BOOT_RSVD             00000002   0000004e  00000005  00000049  RWIX
   RAMM1                 00000400   00000400  00000300  00000100  RWIX
   DEV_EMU               00000880   00000105  00000004  00000101  RWIX
   SYS_PWR_CTL           00000985   00000003  00000003  00000000  RWIX
@@ -104,48 +104,40 @@ codestart
 ramfuncs   0    00000066    00000004     
                   00000066    00000004     F2806x_usDelay.obj (ramfuncs)
 
-.text      0    00008000    00000932     
+.text      0    00008000    0000093f     
                   00008000    0000039b     F2806x_DefaultIsr.obj (.text:retain)
                   0000839b    00000188     F2806x_SysCtrl.obj (.text)
                   00008523    000000d8     F2806x_EPwm.obj (.text)
-                  000085fb    000000b2     MonSPI.obj (.text:retain)
-                  000086ad    00000080     MonEPwm.obj (.text)
-                  0000872d    00000075     MonEQep.obj (.text)
-                  000087a2    0000004a     F2806x_Spi.obj (.text)
-                  000087ec    00000046     rts2800_fpu32.lib : boot.obj (.text)
-                  00008832    00000039     MonSPI.obj (.text)
-                  0000886b    00000028     F2806x_PieCtrl.obj (.text)
-                  00008893    00000028     F2806x_PieVect.obj (.text)
-                  000088bb    00000019     MiscFunctions.obj (.text)
-                  000088d4    00000019     rts2800_fpu32.lib : args_main.obj (.text)
-                  000088ed    00000019                       : exit.obj (.text)
-                  00008906    00000011     main.obj (.text)
-                  00008917    00000009     rts2800_fpu32.lib : _lock.obj (.text)
-                  00008920    00000008     F2806x_CodeStartBranch.obj (.text)
-                  00008928    00000007     F2806x_DisInt.obj (.text)
-                  0000892f    00000003     F2806x_DBGIER.obj (.text)
+                  000085fb    000000bf     MonSPI.obj (.text:retain)
+                  000086ba    00000080     MonEPwm.obj (.text)
+                  0000873a    00000075     MonEQep.obj (.text)
+                  000087af    0000004a     F2806x_Spi.obj (.text)
+                  000087f9    00000046     rts2800_fpu32.lib : boot.obj (.text)
+                  0000883f    00000039     MonSPI.obj (.text)
+                  00008878    00000028     F2806x_PieCtrl.obj (.text)
+                  000088a0    00000028     F2806x_PieVect.obj (.text)
+                  000088c8    00000019     MiscFunctions.obj (.text)
+                  000088e1    00000019     rts2800_fpu32.lib : args_main.obj (.text)
+                  000088fa    00000019                       : exit.obj (.text)
+                  00008913    00000011     main.obj (.text)
+                  00008924    00000009     rts2800_fpu32.lib : _lock.obj (.text)
+                  0000892d    00000008     F2806x_CodeStartBranch.obj (.text)
+                  00008935    00000007     F2806x_DisInt.obj (.text)
+                  0000893c    00000003     F2806x_DBGIER.obj (.text)
 
 .pinit     0    00000050    00000000     UNINITIALIZED
 
 .reset     0    003fffc0    00000002     DSECT
                   003fffc0    00000002     rts2800_fpu32.lib : boot.obj (.reset)
 
-dclfuncs   0    0000006a    00000266     
-                  0000006a    000000af     DCL_DF13.obj (dclfuncs)
-                  00000119    0000009d     DCL_DF23.obj (dclfuncs)
-                  000001b6    00000079     DCL_DF22.obj (dclfuncs)
-                  0000022f    00000067     DCL_PID.obj (dclfuncs)
-                  00000296    0000003a     DCL_PI.obj (dclfuncs)
+csm_rsvd   0    0000006a    00000076     
+                  0000006a    00000076     F2806x_CSMPasswords.obj (csm_rsvd)
 
-csm_rsvd   0    000002d0    00000076     
-                  000002d0    00000076     F2806x_CSMPasswords.obj (csm_rsvd)
+dclfuncs   0    000000e0    0000003a     
+                  000000e0    0000003a     DCL_PI.obj (dclfuncs)
 
-Cla1Prog   0    00008932    00000206     
-                  00008932    000000b4     DCL_DF13_CLA.obj (Cla1Prog:_DCL_runDF13c)
-                  000089e6    0000008c     DCL_DF23_CLA.obj (Cla1Prog:_DCL_runDF23c)
-                  00008a72    0000005a     DCL_DF22_CLA.obj (Cla1Prog:_DCL_runDF22c)
-                  00008acc    00000044     DCL_PID_CLA.obj (Cla1Prog:_DCL_runPIDc)
-                  00008b10    00000028     DCL_PI_CLA.obj (Cla1Prog:_DCL_runPIc)
+Cla1Prog   0    0000011a    00000028     
+                  0000011a    00000028     DCL_PI_CLA.obj (Cla1Prog:_DCL_runPIc)
 
 .stack     1    00000400    00000300     UNINITIALIZED
                   00000400    00000300     --HOLE--
@@ -388,27 +380,19 @@ CsmPwlFile
 *          1    003f7ff8    00000008     UNINITIALIZED
                   003f7ff8    00000008     F2806x_GlobalVariableDefs.obj (CsmPwlFile)
 
-csmpasswds 
-*          0    00000346    00000008     
-                  00000346    00000008     F2806x_CSMPasswords.obj (csmpasswds)
-
 .scratchpad 
-*          1    00000002    0000000a     UNINITIALIZED
-                  00000002    00000002     DCL_DF22_CLA.obj (.scratchpad:Cla1Prog:_DCL_runDF22c)
-                  00000002    00000002     DCL_DF23_CLA.obj (.scratchpad:Cla1Prog:_DCL_runDF23c)
+*          1    00000002    00000005     UNINITIALIZED
                   00000002    00000005     DCL_PI_CLA.obj (.scratchpad:Cla1Prog:_DCL_runPIc)
-                  00000002    00000006     DCL_DF13_CLA.obj (.scratchpad:Cla1Prog:_DCL_runDF13c)
-                  00000002    0000000a     DCL_PID_CLA.obj (.scratchpad:Cla1Prog:_DCL_runPIDc)
+
+csmpasswds 
+*          0    00000142    00000008     
+                  00000142    00000008     F2806x_CSMPasswords.obj (csmpasswds)
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
 
 address     data page           name
 --------    ----------------    ----
-00000002       0 (00000000)     __cla_DCL_runDF13c_sp
-00000002       0 (00000000)     __cla_DCL_runDF22c_sp
-00000002       0 (00000000)     __cla_DCL_runDF23c_sp
-00000002       0 (00000000)     __cla_DCL_runPIDc_sp
 00000002       0 (00000000)     __cla_DCL_runPIc_sp
 
 00000400      10 (00000400)     __stack
@@ -535,7 +519,7 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 page  address   name                 
 ----  -------   ----                 
 0     00008000  .text                
-0     000088ed  C$$EXIT              
+0     000088fa  C$$EXIT              
 0     000080be  _ADCINT1_ISR         
 0     000080c8  _ADCINT2_ISR         
 0     000082d0  _ADCINT3_ISR         
@@ -569,36 +553,16 @@ page  address   name
 1     00000ae0  _CsmRegs             
 0     000084a4  _CsmUnlock           
 0     00008014  _DATALOG_ISR         
-0     0000006a  _DCL_runDF13         
-0     00008932  _DCL_runDF13c        
-0     000000b8  _DCL_runDF13i        
-0     00008984  _DCL_runDF13ic       
-0     000000c5  _DCL_runDF13p        
-0     00008994  _DCL_runDF13pc       
-0     000001b6  _DCL_runDF22         
-0     00008a72  _DCL_runDF22c        
-0     000001f1  _DCL_runDF22i        
-0     00008a98  _DCL_runDF22ic       
-0     00000200  _DCL_runDF22p        
-0     00008aa2  _DCL_runDF22pc       
-0     00000119  _DCL_runDF23         
-0     000089e6  _DCL_runDF23c        
-0     00000165  _DCL_runDF23i        
-0     00008a22  _DCL_runDF23ic       
-0     00000174  _DCL_runDF23p        
-0     00008a32  _DCL_runDF23pc       
-0     00000296  _DCL_runPI           
-0     0000022f  _DCL_runPID          
-0     00008acc  _DCL_runPIDc         
-0     00008b10  _DCL_runPIc          
+0     000000e0  _DCL_runPI           
+0     0000011a  _DCL_runPIc          
 0     00008244  _DINTCH1_ISR         
 0     0000824e  _DINTCH2_ISR         
 0     00008258  _DINTCH3_ISR         
 0     00008262  _DINTCH4_ISR         
 0     0000826c  _DINTCH5_ISR         
 0     00008276  _DINTCH6_ISR         
-0     00008928  _DSP28x_DisableInt   
-0     0000892c  _DSP28x_RestoreInt   
+0     00008935  _DSP28x_DisableInt   
+0     00008939  _DSP28x_RestoreInt   
 0     00000066  _DSP28x_usDelay      
 1     00000880  _DevEmuRegs          
 0     000083bf  _DisableDog          
@@ -648,7 +612,7 @@ page  address   name
 1     00006b40  _EQep2Regs           
 1     00000d01  _EmuBMode            
 1     00000d00  _EmuKey              
-0     0000888a  _EnableInterrupts    
+0     00008897  _EnableInterrupts    
 0     0000850d  _ExtOscSel           
 1     00000a80  _FlashRegs           
 1     00000d04  _Flash_CPUScaleFactor
@@ -682,14 +646,14 @@ page  address   name
 0     00008524  _InitEPwmGpio        
 0     000085c9  _InitEPwmSyncGpio    
 0     0000844a  _InitPeripheralClocks
-0     0000886b  _InitPieCtrl         
-0     00008893  _InitPieVectTable    
+0     00008878  _InitPieCtrl         
+0     000088a0  _InitPieVectTable    
 0     000083c7  _InitPll             
 0     0000841c  _InitPll2            
-0     000087a2  _InitSpi             
-0     000087a3  _InitSpiGpio         
-0     000087a8  _InitSpiaGpio        
-0     000087ce  _InitSpibGpio        
+0     000087af  _InitSpi             
+0     000087b0  _InitSpiGpio         
+0     000087b5  _InitSpiaGpio        
+0     000087db  _InitSpibGpio        
 0     0000839b  _InitSysCtrl         
 0     000085da  _InitTzGpio          
 0     000084d5  _IntOsc1Sel          
@@ -718,7 +682,7 @@ page  address   name
 1     00007050  _SciaRegs            
 1     00007750  _ScibRegs            
 0     000083b5  _ServiceDog          
-0     0000892f  _SetDBGIER           
+0     0000893c  _SetDBGIER           
 1     00007040  _SpiaRegs            
 1     00007740  _SpibRegs            
 1     00007010  _SysCtrlRegs         
@@ -751,44 +715,41 @@ abs   00000300  __STACK_SIZE
 abs   ffffffff  ___binit__           
 abs   ffffffff  ___c_args__          
 0     00000050  ___cinit__           
-0     00008932  ___etext__           
+0     0000893f  ___etext__           
 abs   ffffffff  ___pinit__           
 0     00008000  ___text__            
-0     000088d4  __args_main          
-1     00000002  __cla_DCL_runDF13c_sp
-1     00000002  __cla_DCL_runDF22c_sp
-1     00000002  __cla_DCL_runDF23c_sp
-1     00000002  __cla_DCL_runPIDc_sp 
+0     000088e1  __args_main          
 1     00000002  __cla_DCL_runPIc_sp  
 1     0000a13a  __lock               
-0     0000891f  __nop                
-0     0000891b  __register_lock      
-0     00008917  __register_unlock    
+0     0000892c  __nop                
+0     00008928  __register_lock      
+0     00008924  __register_unlock    
 1     00000400  __stack              
 1     0000a13c  __unlock             
-0     000088ed  _abort               
-0     000087ec  _c_int00             
-0     000088bb  _config              
+0     000088fa  _abort               
+0     000087f9  _c_int00             
+0     000088c8  _config              
 1     0000a106  _ek                  
-0     000088ef  _exit                
+0     000088fc  _exit                
 1     0000a104  _flagsSPI            
-0     000086ad  _initEPwm1           
-0     000086ed  _initEPwm2           
-0     0000872d  _initEQep1           
-0     00008768  _initEQep2           
-0     00008832  _initSPI             
-0     00008906  _main                
+0     000086ba  _initEPwm1           
+0     000086fa  _initEPwm2           
+0     0000873a  _initEQep1           
+0     00008775  _initEQep2           
+0     0000883f  _initSPI             
+0     00008913  _main                
 1     0000a114  _recievedComBuff     
 0     00008391  _rsvd_ISR            
 1     0000a10a  _sentComBuff         
 0     000085fb  _spiInterrupt        
+0     000086ad  _spiWDT              
 1     0000a100  _test                
 1     0000a102  _test2               
 1     0000a108  _vitesse             
 abs   ffffffff  binit                
 0     00000050  cinit                
 0     00000000  code_start           
-0     00008932  etext                
+0     0000893f  etext                
 abs   ffffffff  pinit                
 
 
@@ -800,17 +761,8 @@ page  address   name
 0     00000050  ___cinit__           
 0     00000050  cinit                
 0     00000066  _DSP28x_usDelay      
-0     0000006a  _DCL_runDF13         
-0     000000b8  _DCL_runDF13i        
-0     000000c5  _DCL_runDF13p        
-0     00000119  _DCL_runDF23         
-0     00000165  _DCL_runDF23i        
-0     00000174  _DCL_runDF23p        
-0     000001b6  _DCL_runDF22         
-0     000001f1  _DCL_runDF22i        
-0     00000200  _DCL_runDF22p        
-0     0000022f  _DCL_runPID          
-0     00000296  _DCL_runPI           
+0     000000e0  _DCL_runPI           
+0     0000011a  _DCL_runPIc          
 0     00008000  .text                
 0     00008000  _INT13_ISR           
 0     00008000  ___text__            
@@ -929,48 +881,34 @@ page  address   name
 0     000085c9  _InitEPwmSyncGpio    
 0     000085da  _InitTzGpio          
 0     000085fb  _spiInterrupt        
-0     000086ad  _initEPwm1           
-0     000086ed  _initEPwm2           
-0     0000872d  _initEQep1           
-0     00008768  _initEQep2           
-0     000087a2  _InitSpi             
-0     000087a3  _InitSpiGpio         
-0     000087a8  _InitSpiaGpio        
-0     000087ce  _InitSpibGpio        
-0     000087ec  _c_int00             
-0     00008832  _initSPI             
-0     0000886b  _InitPieCtrl         
-0     0000888a  _EnableInterrupts    
-0     00008893  _InitPieVectTable    
-0     000088bb  _config              
-0     000088d4  __args_main          
-0     000088ed  C$$EXIT              
-0     000088ed  _abort               
-0     000088ef  _exit                
-0     00008906  _main                
-0     00008917  __register_unlock    
-0     0000891b  __register_lock      
-0     0000891f  __nop                
-0     00008928  _DSP28x_DisableInt   
-0     0000892c  _DSP28x_RestoreInt   
-0     0000892f  _SetDBGIER           
-0     00008932  _DCL_runDF13c        
-0     00008932  ___etext__           
-0     00008932  etext                
-0     00008984  _DCL_runDF13ic       
-0     00008994  _DCL_runDF13pc       
-0     000089e6  _DCL_runDF23c        
-0     00008a22  _DCL_runDF23ic       
-0     00008a32  _DCL_runDF23pc       
-0     00008a72  _DCL_runDF22c        
-0     00008a98  _DCL_runDF22ic       
-0     00008aa2  _DCL_runDF22pc       
-0     00008acc  _DCL_runPIDc         
-0     00008b10  _DCL_runPIc          
-1     00000002  __cla_DCL_runDF13c_sp
-1     00000002  __cla_DCL_runDF22c_sp
-1     00000002  __cla_DCL_runDF23c_sp
-1     00000002  __cla_DCL_runPIDc_sp 
+0     000086ad  _spiWDT              
+0     000086ba  _initEPwm1           
+0     000086fa  _initEPwm2           
+0     0000873a  _initEQep1           
+0     00008775  _initEQep2           
+0     000087af  _InitSpi             
+0     000087b0  _InitSpiGpio         
+0     000087b5  _InitSpiaGpio        
+0     000087db  _InitSpibGpio        
+0     000087f9  _c_int00             
+0     0000883f  _initSPI             
+0     00008878  _InitPieCtrl         
+0     00008897  _EnableInterrupts    
+0     000088a0  _InitPieVectTable    
+0     000088c8  _config              
+0     000088e1  __args_main          
+0     000088fa  C$$EXIT              
+0     000088fa  _abort               
+0     000088fc  _exit                
+0     00008913  _main                
+0     00008924  __register_unlock    
+0     00008928  __register_lock      
+0     0000892c  __nop                
+0     00008935  _DSP28x_DisableInt   
+0     00008939  _DSP28x_RestoreInt   
+0     0000893c  _SetDBGIER           
+0     0000893f  ___etext__           
+0     0000893f  etext                
 1     00000002  __cla_DCL_runPIc_sp  
 1     00000400  __stack              
 1     00000700  __STACK_END          
@@ -1053,4 +991,4 @@ abs   ffffffff  ___pinit__
 abs   ffffffff  binit                
 abs   ffffffff  pinit                
 
-[256 symbols]
+[233 symbols]
